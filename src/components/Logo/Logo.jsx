@@ -4,7 +4,7 @@ import './Logo.scss';
 
 export default function Logo (props) {
     return (
-        <svg id="logo" viewBox="0 0 400 50" preserveAspectRatio="xMidYMid meet">
+        <svg id="logo" viewBox="0 0 400 80" preserveAspectRatio="xMidYMid meet">
             <g id="letter_s">
                 <path class="fill-white" d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5
                 c0.9,3.8,3.8,5.8,9,5.8h27.1c5.7,0,8.5-2.2,8.5-6.9v-4.9C46.1,33.1,42.8,30.8,37.5,30.5z"></path>
@@ -31,6 +31,7 @@ export default function Logo (props) {
             <g id="letter_swoosh">
                 <path class="fill-white" d="M399,0.7c-80,4.6-117,38.8-125.3,46.9l-1.7,1.6h14.8C326.8,9.1,384.3,2,399,0.7L399,0.7z"></path>
             </g>
+            <text className="fill-white logo-text" x="200" y="80" font>Launches</text>
         </svg>
     )
 }
