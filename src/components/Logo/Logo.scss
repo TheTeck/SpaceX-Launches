@@ -1,0 +1,14 @@
+@import "../../sass/colors";
+
+#logo {
+  max-width: 400px;
+  max-height: 50px;
+  width: 80%;
+  position: absolute;
+  top: 30px;
+  right: 5%;
+}
+
+.fill-white {
+  fill: $color-font-light;
+}
