@@ -1,8 +1,9 @@
 @import "../../sass/colors";
+@import "../../sass/fonts";
 
 #logo {
   max-width: 400px;
-  max-height: 50px;
+  max-height: 80px;
   width: 80%;
   position: absolute;
   top: 30px;
@@ -11,4 +12,9 @@
 
 .fill-white {
   fill: $color-font-light;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-family: $font-logo;
 }
