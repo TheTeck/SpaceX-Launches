@@ -9,10 +9,9 @@ const rocketColors = {
     'Falcon Heavy': '#6baa47'
 }
 
-export default function TimeLine (props) {
+export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
 
     const [data, setData] = useState([]);
-    const [activeNode, setActiveNode] = useState(null);
 
     const svgRef = useRef();
 
@@ -25,11 +24,6 @@ export default function TimeLine (props) {
         } catch (error) {
             console.log(error)
         }
-    }
-
-    // Hide launch details
-    function handleHideDetails () {
-        setActiveNode(0);
     }
 
     useEffect(() => {
@@ -48,7 +42,7 @@ export default function TimeLine (props) {
             .domain([minYear, maxYear])
             .range([0, 4000])
         
-        // Make circle larger when hovered over
+        // Make circle larger and show text when hovered over
         function handleMouseOver () {
             this.parentNode.appendChild(this);
 
@@ -67,7 +61,7 @@ export default function TimeLine (props) {
                         .style('font-size', '36px')
         }
 
-        // Make circle small when mouse stops hovering
+        // Make circle small and text hidden when mouse stops hovering
         function handleMouseOut () {
             this.parentNode.appendChild(this);
 
@@ -87,26 +81,30 @@ export default function TimeLine (props) {
 
         // Show launch details
         function handleShowDetails (e, d) {
-            setActiveNode(d);
-
             updateLines(lines);
             updateCircles(circles);
             updateTexts(texts);
 
+            const longer = lineLength + circleRadius * 6;
+
             d3.select(this)
                 .select('line')
-                    .attr('x2', lineLength + circleRadius * 6)
+                    .attr('x2', longer)
                     .style('stroke-width', 3)
             
             d3.select(this)
                 .select('circle')
-                    .attr('cx', lineLength + circleRadius * 6)
+                    .attr('cx', longer)
                     .style('stroke-width', 3)
             
             d3.select(this)
                 .select('text')
-                    .attr('x', lineLength + circleRadius * 6)
+                    .attr('x', longer)
+            
+            updateActiveLaunch(d);
         }
+
+        
 
         // Draw the vertical axis
         svg.append('g')
@@ -127,7 +125,7 @@ export default function TimeLine (props) {
         // Draw the line from the axis to the circle
         const lines = nodes
             .append('line')
-        
+
         updateLines(lines);
 
         // Draw the circles for each launch entry
@@ -144,7 +142,8 @@ export default function TimeLine (props) {
 
         function updateCircles (c) {
             c
-                .attr('id', (d, i) => 'circle-' + i)
+                //.attr('id', (d, i) => 'circle-' + i)
+                .attr('class', 'node-circle')
                 .attr('cx', (d, i) => lineLength + circleRadius + (i % 2 ? circleRadius * 2 : 0))
                 .attr('cy', d => y(new Date(d.launch_date_utc)))
                 .attr('r', circleRadius)
@@ -168,7 +167,6 @@ export default function TimeLine (props) {
         function updateTexts (t) {
             t
                 .attr('class', 'launch-number')
-                .attr('font-size', '18px')
                 .attr('x', (d, i) => lineLength + circleRadius + (i % 2 ? circleRadius * 2 : 0))
                 .attr('y', d => y(new Date(d.launch_date_utc)))
                 .style('font-size', '0px')
@@ -177,13 +175,11 @@ export default function TimeLine (props) {
                 .style('visibility', 'hidden')
                 .text(d => d.flight_number)
         }
-
-    }, [data, activeNode])
+    }, [data, activeLaunch])
 
     return (
         <div id="timeline-container">
             <svg ref={svgRef}></svg>
-            <div onClick={handleHideDetails} id="launch-details" className={ activeNode ? 'active-details' : 'hidden-details'}>{activeNode ? activeNode.details: ''}</div>
         </div>
     )
 }

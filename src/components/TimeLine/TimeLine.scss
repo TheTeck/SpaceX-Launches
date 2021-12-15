@@ -8,26 +8,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: inset 220px 0 200px black;
+  box-shadow: inset 280px 0 300px black;
+
+  svg {
+    width: 100%;
+    height: 4200px;
+  }
 }
 
-svg {
-  width: 100%;
-  height: 4200px;
-}
-
-// Change all of this
-#launch-details {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background-color: whitesmoke;
-  padding: 20px;
-  border: 4px solid rgb(53, 107, 177);
-  border-radius: 15px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.node-circle {
+  cursor: pointer;
 }
 
 .active-details {

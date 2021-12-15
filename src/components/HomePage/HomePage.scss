@@ -9,4 +9,16 @@
     object-fit: cover;
     object-position: 60% 50%;
   }
+
+  #logo {
+    width: 400px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+  }
+}
+
+.fill-white {
+  fill: white;
 }
