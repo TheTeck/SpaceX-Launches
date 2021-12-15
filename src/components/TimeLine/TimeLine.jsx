@@ -178,8 +178,10 @@ export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
     }, [data, activeLaunch])
 
     return (
-        <div id="timeline-container">
-            <svg ref={svgRef}></svg>
+        <div id="timeline-offset-wrapper">
+            <div id="timeline-container">
+                <svg ref={svgRef}></svg>
+            </div>
         </div>
     )
 }
