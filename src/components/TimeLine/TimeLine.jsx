@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
 import './TimeLine.scss';
+import apiService from '../../utilities/apiService';
 
 const rocketColors = {
     'Falcon 1': '#d86628',
@@ -26,8 +27,18 @@ export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
         }
     }
 
+    async function fetchData () {
+        try {
+            const apiData = await apiService.getData();
+            setData(apiData);
+        } catch (error) {
+            console.log('Unable to retreive data');
+        }
+    }
+
     useEffect(() => {
-        getData();
+        fetchData();
+        //getData();
     }, [])
 
     useEffect(() => {
