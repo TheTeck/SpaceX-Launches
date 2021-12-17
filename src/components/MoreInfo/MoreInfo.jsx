@@ -18,7 +18,7 @@ export default function MoreInfo ({ launch, updateActiveLaunch, toggleDisplay })
     return (
         <div className="launch-details">
             <DetailSection width={100}>
-                <p><strong>Payloads</strong></p>
+                <p><strong>Payload</strong></p>
                 {
                     payloads.map((payload, index) => {
                         return (
