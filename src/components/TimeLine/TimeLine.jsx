@@ -16,17 +16,6 @@ export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
 
     const svgRef = useRef();
 
-    async function getData () {
-        try {
-            const apiData = await fetch ('https://api.spacexdata.com/v2/launches', {
-                method: 'GET'
-            }).then(res => res.json());
-            setData(apiData)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     async function fetchData () {
         try {
             const apiData = await apiService.getData();
@@ -38,7 +27,6 @@ export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
 
     useEffect(() => {
         fetchData();
-        //getData();
     }, [])
 
     useEffect(() => {
