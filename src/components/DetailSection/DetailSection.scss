@@ -1,0 +1,15 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+@import "../../sass/fonts";
+
+.detailsection-container {
+  background-color: $color-font-light;
+  padding: $padding-details-text-small $padding-details-text-medium;
+  font-size: $font-small;
+  color: $color-font-dark;
+  border-radius: $radius-details-section;
+  margin: 5px 0;
+  height: 100%;
+  max-height: 250px;
+  overflow: scroll;
+}
