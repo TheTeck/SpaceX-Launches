@@ -57,3 +57,18 @@
   background-color: transparent;
   color: $color-font-light;
 }
+
+.payload-index {
+  font-size: $font-tiny;
+  font-weight: 600;
+  color: $color-font-light;
+  border: 1px solid $color-font-dark;
+  width: 60px;
+  text-align: center;
+  border-radius: $radius-details-section;
+  background-color: $color-index;
+}
+
+.payload-data {
+  margin-top: $padding-details-text-medium;
+}

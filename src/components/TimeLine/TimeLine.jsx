@@ -174,7 +174,7 @@ export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
                 .style('visibility', 'hidden')
                 .text(d => d.flight_number)
         }
-    }, [data, activeLaunch])
+    }, [data, updateActiveLaunch])
 
     return (
         <div id="timeline-offset-wrapper">
