@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import './HomePage.scss';
 import TimeLine from '../TimeLine/TimeLine';
+import Stats from '../Stats/Stats';
 import LaunchDetails from '../LaunchDetails/LaunchDetails';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
@@ -25,7 +26,7 @@ export default function HomePage (props) {
             {
                 currentNav === 'timeline' ? 
                     <TimeLine activeLaunch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
-                : ''
+                : <Stats />
             }
             <Logo />
             <Nav current={currentNav} handleNavigationClick={handleNavigationClick} />
