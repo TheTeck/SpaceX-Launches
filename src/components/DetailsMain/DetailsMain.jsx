@@ -3,6 +3,12 @@ import React from 'react';
 import './DetailsMain.scss';
 import DetailSection from '../DetailSection/DetailSection';
 
+const rocketColors = {
+    'Falcon 1': '#d86628',
+    'Falcon 9': '#4b78bd',
+    'Falcon Heavy': '#6baa47'
+}
+
 export default function DetailsMain ({ launch, updateActiveLaunch, toggleDisplay }) {
 
     function handleDetailsClick () {
