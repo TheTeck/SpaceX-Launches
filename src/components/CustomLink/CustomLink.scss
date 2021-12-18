@@ -1,0 +1,33 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+
+.link-container {
+  width: auto;
+  border: 2px solid $color-font-light;
+  border-radius: $radius-links;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: $padding-details-text-small auto;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-font-dark;
+  }
+}
+
+.link-icon {
+  font-size: 24px;
+  color: $color-success;
+  padding: $padding-details-text-small $padding-details-text-medium;
+  border-right: 2px solid $color-font-light;
+}
+
+.link-text {
+  text-align: center;
+  color: $color-font-light;
+  padding: 0 $padding-details-text-medium;
+  font-weight: 700;
+}

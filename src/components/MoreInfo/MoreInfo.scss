@@ -2,7 +2,7 @@
 @import "../../sass/dimensions";
 @import "../../sass/fonts";
 
-.launch-details {
+.launch-more-details {
   position: fixed;
   width: 80%;
   max-width: 500px;
@@ -17,9 +17,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 
   p {
     margin: 0;
@@ -71,4 +70,5 @@
 
 .payload-data {
   margin-top: $padding-details-text-medium;
+  border-radius: $radius-details-section;
 }
