@@ -39,7 +39,7 @@ export default function MoreInfo ({ launch, updateActiveLaunch, toggleDisplay })
             <CustomLink icon={"movie"} text="Launch Video" link={launch.links.video_link} />
             
             <div className="button-display">
-                <button id="more-button" className="btn-set" onClick={handleToggleDisplay}>Back</button>
+                <button id="back-button" className="btn-set" onClick={handleToggleDisplay}>Back</button>
                 <button id="close-display" className="btn-set" onClick={handleDetailsClick}>Close</button>
             </div>
         </div>

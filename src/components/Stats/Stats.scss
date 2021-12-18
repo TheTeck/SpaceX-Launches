@@ -1,0 +1,15 @@
+@import "../../sass/colors";
+
+#stats-container {
+  width: 100vw;
+  height: 100vh;
+  box-shadow: inset 280px 0 300px black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-font-dark;
+  font-weight: 700;
+}
