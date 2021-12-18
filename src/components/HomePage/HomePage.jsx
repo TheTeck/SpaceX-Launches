@@ -4,22 +4,33 @@ import './HomePage.scss';
 import TimeLine from '../TimeLine/TimeLine';
 import LaunchDetails from '../LaunchDetails/LaunchDetails';
 import Logo from '../Logo/Logo';
+import Nav from '../Nav/Nav';
 
 export default function HomePage (props) {
 
     const [activeLaunch, setActiveLaunch] = useState(null);
+    const [currentNav, setCurrentNav] = useState('timeline');
 
     function updateActiveLaunch (launch) {
         setActiveLaunch(launch);
     }
 
+    function handleNavigationClick (page) {
+        setCurrentNav(page);
+    }
+
     return (
         <div id="homepage-container">
             <img src={'/rocket.jpg'} alt="SpaceX rocket taking off" />
-            <TimeLine activeLaunch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
-            <Logo />
             {
-                activeLaunch ? 
+                currentNav === 'timeline' ? 
+                    <TimeLine activeLaunch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
+                : ''
+            }
+            <Logo />
+            <Nav current={currentNav} handleNavigationClick={handleNavigationClick} />
+            {
+                currentNav === 'timeline' && activeLaunch ? 
                     <LaunchDetails launch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
                 : ''
             }
