@@ -1,0 +1,30 @@
+@import "../../sass/colors";
+@import "../../sass/fonts";
+@import "../../sass/dimensions";
+
+nav {
+  position: absolute;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.631);
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+
+  button {
+    background-color: transparent;
+    color: $color-font-light;
+    font-size: $font-small;
+    outline: none;
+    border: none;
+    padding: $padding-details-text-medium $padding-details-text-large;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 300ms linear;
+    cursor: pointer;
+  }
+}
+
+.active-nav {
+  border-bottom: 2px solid $color-font-light;
+}
