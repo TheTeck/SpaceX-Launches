@@ -3,6 +3,7 @@ import React from 'react';
 import './MoreInfo.scss';
 import DetailSection from '../DetailSection/DetailSection';
 import CustomLink from '../CustomLink/CustomLink';
+import svgIcons from '../../utilities/svgIcons';
 
 export default function MoreInfo ({ launch, updateActiveLaunch, toggleDisplay }) {
 
@@ -33,10 +34,9 @@ export default function MoreInfo ({ launch, updateActiveLaunch, toggleDisplay })
                     })
                 }
             </DetailSection>
-
-            <CustomLink icon={"rocket_launch"} text="Mission Patch" link={launch.links.mission_patch} />
-            <CustomLink icon={"feed"} text="Wikipedia" link={launch.links.wikipedia} />
-            <CustomLink icon={"movie"} text="Launch Video" link={launch.links.video_link} />
+            <CustomLink icon={svgIcons.rocket} text="Mission Patch" link={launch.links.mission_patch} />
+            <CustomLink icon={svgIcons.wiki} text="Wikipedia" link={launch.links.wikipedia} />
+            <CustomLink icon={svgIcons.movie} text="Launch Video" link={launch.links.video_link} />
             
             <div className="button-display">
                 <button id="back-button" className="btn-set" onClick={handleToggleDisplay}>Back</button>
