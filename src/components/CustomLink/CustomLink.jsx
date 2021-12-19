@@ -9,7 +9,7 @@ export default function CustomLink ({ icon, text, link }) {
             href={link} target="_blank" 
             rel="no referrer noopener"
         >
-            <div className="material-icons link-icon">{ icon }</div>
+            <div className="link-icon">{ icon }</div>
             <div className="link-text">{ text }</div>
         </a>
     )
