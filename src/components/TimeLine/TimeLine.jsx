@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
 import './TimeLine.scss';
-import apiService from '../../utilities/apiService';
+//import apiService from '../../utilities/apiService';
 
 const rocketColors = {
     'Falcon 1': '#d86628',
@@ -10,24 +10,24 @@ const rocketColors = {
     'Falcon Heavy': '#6baa47'
 }
 
-export default function TimeLine ({ activeLaunch, updateActiveLaunch }) {
+export default function TimeLine ({ launchData, activeLaunch, updateActiveLaunch }) {
 
-    const [data, setData] = useState([]);
+    const [data] = useState(launchData);
 
     const svgRef = useRef();
 
-    async function fetchData () {
-        try {
-            const apiData = await apiService.getData();
-            setData(apiData);
-        } catch (error) {
-            console.log('Unable to retreive data');
-        }
-    }
+    // async function fetchData () {
+    //     try {
+    //         const apiData = await apiService.getData();
+    //         setData(apiData);
+    //     } catch (error) {
+    //         console.log('Unable to retreive data');
+    //     }
+    // }
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
