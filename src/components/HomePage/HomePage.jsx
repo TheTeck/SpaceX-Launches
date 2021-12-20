@@ -42,7 +42,8 @@ export default function HomePage (props) {
                 currentNav === 'timeline' ?
                     launchData.length ? <TimeLine launchData={launchData} activeLaunch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
                     : ''
-                : <Stats />
+                : launchData.length ? <Stats launchs={launchData} />
+                    : ''
             }
             <Logo />
             <Nav current={currentNav} handleNavigationClick={handleNavigationClick} />
