@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3'
 
 import './CustomerPieChart.scss';
 
 export default function CustomerPieChart ({ customers }) {
 
+    const [selectedCustomer, setSelectedCustomer] = useState({ customer: '', payloads: '' });
     const svgRef = useRef();
+    const displayRef = useRef();
 
     useEffect(() => {
         // Get positions for each data object
@@ -27,6 +29,8 @@ export default function CustomerPieChart ({ customers }) {
             .style('visibility', 'hidden')
             .style('position', 'absolute')
             .style('background-color', 'red')
+
+        const displayDiv = d3.select(displayRef.current)
         
         svg.append('g')
             .selectAll('path')
@@ -35,17 +39,19 @@ export default function CustomerPieChart ({ customers }) {
                 .attr('d', arc)
                 .attr('fill', (d,i) => colors(i))
                 .on('mouseover', (e,d) => {
-                    toolDiv
-                        .style('visibility', 'visible')
-                        .text(`${d.data.customer}:` + `${d.data.count}`)
-                })
-                .on('mousemove', (e,d) => {
-                    toolDiv
-                        .style('top', (e.pageY - 50) + 'px')
-                        .style('left', (e.pageX - 50) + 'px')
+                    displayDiv
+                        .append('g')
+                            .append('p')
+                                .text(d.data.customer)
+                                
+                            .append('p')
+                                .text(d.data.count + (d.data.count === 1 ? ' Payload' : ' Payloads'))
+                                //.style('width', '100%')
+
+                                
                 })
                 .on('mouseout', () => {
-                    toolDiv.style('visibility', 'hidden')
+                    displayDiv.select('g').remove();
                 })
                 
     })
@@ -54,6 +60,7 @@ export default function CustomerPieChart ({ customers }) {
     return (
         <div id="piechart-area">
             <svg ref={svgRef}></svg>
+            <div ref={displayRef} id="customer-display"></div>
         </div>
     )
 }
