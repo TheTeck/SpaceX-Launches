@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SpaceX-Launches/static/css/main.1671c496.css",
+    "main.js": "/SpaceX-Launches/static/js/main.a8353de3.js",
+    "static/js/787.a22f1992.chunk.js": "/SpaceX-Launches/static/js/787.a22f1992.chunk.js",
+    "index.html": "/SpaceX-Launches/index.html",
+    "main.1671c496.css.map": "/SpaceX-Launches/static/css/main.1671c496.css.map",
+    "main.a8353de3.js.map": "/SpaceX-Launches/static/js/main.a8353de3.js.map",
+    "787.a22f1992.chunk.js.map": "/SpaceX-Launches/static/js/787.a22f1992.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1671c496.css",
+    "static/js/main.a8353de3.js"
+  ]
+}
