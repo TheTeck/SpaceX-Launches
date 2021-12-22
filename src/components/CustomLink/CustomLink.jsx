@@ -7,7 +7,7 @@ export default function CustomLink ({ icon, text, link }) {
         <a 
             className="link-container" 
             href={link} target="_blank" 
-            rel="no referrer noopener"
+            rel="noreferrer noopener"
         >
             <div className="link-icon">{ icon }</div>
             <div className="link-text">{ text }</div>

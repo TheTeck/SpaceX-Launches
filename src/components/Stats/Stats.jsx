@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './Stats.scss';
 import CustomerPieChart from '../CustomerPieChart/CustomerPieChart';
 
 export default function Stats ({ launchs }) {
-
-    const allCustomers = launchs.map(launch => launch.rocket.second_stage.payloads[0].customers[0]);
+    const allCustomers = [];
     const customerCount = {};
+
+    // Add each rocket's possibly multiple payloads' customers to an array
+    launchs.forEach(launch => {
+        let launchPayloads = launch.rocket.second_stage.payloads;
+        allCustomers.push(...launchPayloads.map(payload => {
+            return payload.customers;
+        }))
+    });
 
     // Get the count for each of the different customers
     // as an object

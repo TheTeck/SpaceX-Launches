@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3'
 
 import './CustomerPieChart.scss';
 
 export default function CustomerPieChart ({ customers }) {
 
-    const [selectedCustomer, setSelectedCustomer] = useState({ customer: '', payloads: '' });
     const svgRef = useRef();
     const displayRef = useRef();
 
