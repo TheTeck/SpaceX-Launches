@@ -37,7 +37,7 @@ export default function HomePage (props) {
 
     return (
         <div id="homepage-container">
-            <img src='/rocket.jpg' alt="SpaceX rocket taking off" />
+            <img src='rocket.jpg' alt="SpaceX rocket taking off" />
             {
                 currentNav === 'timeline' ?
                     launchData.length ? <TimeLine launchData={launchData} activeLaunch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
