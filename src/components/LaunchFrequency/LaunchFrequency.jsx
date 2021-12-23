@@ -40,7 +40,7 @@ export default function LaunchFrequency ({ launches }) {
         const svg = d3.select(svgRef.current)
             .attr('width', width)
             .attr('height', height)
-            .style('background-color', 'yellow')
+            .style('background-color', 'white')
     
         const xScale = d3.scaleLinear()
             .domain([0, data.length])
@@ -56,7 +56,20 @@ export default function LaunchFrequency ({ launches }) {
 
         const yAxis = d3.axisLeft(yScale)
             .ticks(20)
-            .tickFormat(d => d)
+            .tickFormat(d => d % 2 ? d : '')
+
+        const generateScaledLine = d3.line()
+            .x((d, i) => xScale(d.year - 2006))
+            .y(d => yScale(d.count))
+
+        svg.selectAll('.line')
+            .data([data])
+            .join('path')
+                .attr('d', d => generateScaledLine(d))
+                .attr('stroke', 'purple')
+                .attr('stroke-width', 4)
+                .attr('fill', 'none')
+
 
         svg.append('g')
             .style('font-size', '16px')
@@ -70,7 +83,10 @@ export default function LaunchFrequency ({ launches }) {
 
     return (
         <div id="frequency-container">
-            <svg ref={svgRef}></svg>
+            <div id="linegraph-title">Launches Per Year</div>
+            <div id="frequency-wrapper">
+                <svg ref={svgRef}></svg>
+            </div>
         </div>
     )
 }
