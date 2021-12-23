@@ -43,7 +43,7 @@ export default function LaunchFrequency ({ launches }) {
             .style('background-color', 'yellow')
     
         const xScale = d3.scaleLinear()
-            .domain([0, data.length-1])
+            .domain([0, data.length])
             .range([margin.left, width - margin.right])
         
         const yScale = d3.scaleLinear()
@@ -52,13 +52,14 @@ export default function LaunchFrequency ({ launches }) {
         
         const xAxis = d3.axisBottom(xScale)
             .ticks(data.length)
-            .tickFormat(i => +launches[0].launch_year + i)
+            .tickFormat(i => (i+1) % 2 ? +launches[0].launch_year + i : '')
 
         const yAxis = d3.axisLeft(yScale)
             .ticks(20)
             .tickFormat(d => d)
 
         svg.append('g')
+            .style('font-size', '16px')
             .call(xAxis)
             .attr('transform', `translate(0, ${height - margin.bottom })`)
         
