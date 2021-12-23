@@ -7,19 +7,22 @@ export default function CustomerPieChart ({ customers }) {
 
     const svgRef = useRef();
     const displayRef = useRef();
+    const width = 400;
+    const height = 600;
+    const ringSize = 70;
 
     useEffect(() => {
         // Get positions for each data object
         const pieData = d3.pie().value(d => d.count)(customers);
 
         // Define arcs for graphing and labling
-        const arc = d3.arc().innerRadius(120).outerRadius(200)
+        const arc = d3.arc().innerRadius(width / 2 - ringSize).outerRadius(width / 2)
 
         const svg = d3.select(svgRef.current)
-            .attr('width', 400)
-            .attr('height', 600)
+            .attr('width', width)
+            .attr('height', height)
             .append('g')
-                .attr('transform', 'translate(200, 300)')
+                .attr('transform', `translate(${width/2}, ${height/2})`)
 
         const displayDiv = d3.select(displayRef.current)
         
