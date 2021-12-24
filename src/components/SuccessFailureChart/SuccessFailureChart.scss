@@ -1,0 +1,29 @@
+#successfailure-container {
+  width: 600px;
+  max-width: 90%;
+  height: 600px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#successfailure-wrapper {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: scroll;
+
+  svg {
+    border-radius: 10px;
+  }
+}
+
+#successfailure-title {
+  color: black;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+}

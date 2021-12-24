@@ -77,6 +77,7 @@ export default function LaunchFrequency ({ launches }) {
             .attr('transform', `translate(0, ${height - margin.bottom })`)
         
         svg.append('g')
+            .style('font-size', '16px')
             .call(yAxis)
             .attr('transform', `translate(${margin.left}, 0)`)
     })
