@@ -28,6 +28,9 @@ export default function LaunchFrequency ({ launches }) {
         data.push({ year: +key, count: value })
     }
 
+    // Pad the data with void year
+    data.splice(5, 0, { year: 2011, count: 0 });
+
     const max = data.reduce((acc, year) => {
         return year.count > acc ? year.count : acc;
     }, 0);
@@ -47,7 +50,7 @@ export default function LaunchFrequency ({ launches }) {
             .range([margin.left, width - margin.right])
         
         const yScale = d3.scaleLinear()
-            .domain([min - 1, max])
+            .domain([min, max])
             .range([height - margin.bottom, margin.top])
         
         const xAxis = d3.axisBottom(xScale)

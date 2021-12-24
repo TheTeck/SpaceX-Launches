@@ -8,7 +8,7 @@ export default function SuccessFailureChart ({ launches }) {
     const svgRef = useRef();
     const width = 600;
     const height = 400;
-    const margin = { top: 50, right: 50, bottom: 50, left: 50};
+    const margin = { top: 100, right: 50, bottom: 50, left: 50};
 
     const years = {};
 
@@ -28,14 +28,17 @@ export default function SuccessFailureChart ({ launches }) {
         }
     });
 
-    console.log(years)
-
     const data = [];
 
     // Turn the nested object into an array of objects
     Object.keys(years).forEach(key => {
         data.push(years[key]);
     })
+
+    // Pad the data with void year
+    data.splice(5, 0, { success: 0, failure: 0 });
+
+    console.log(data)
 
     // Get the maximum count for any year
     const max = data.reduce((acc, year) => {
@@ -50,12 +53,62 @@ export default function SuccessFailureChart ({ launches }) {
     }, data[0].success);
 
     useEffect(() => {
+        const svg = d3.select(svgRef.current)
+            .attr('width', width)
+            .attr('height', height)
+            .style('background-color', 'white')
+    
+        const xScale = d3.scaleBand()
+            .domain(d3.range(data.length))
+            .range([margin.left, width - margin.right])
+            .padding(.2)
+        
+        const yScale = d3.scaleLinear()
+            .domain([min, max])
+            .range([height - margin.bottom, margin.top])
+        
+        const xAxis = d3.axisBottom(xScale)
+            .ticks(data.length + 2)
+            .tickFormat(i => (i+1) % 2 ? +launches[0].launch_year + i : '')
 
+        const yAxis = d3.axisLeft(yScale)
+            .ticks(20)
+            .tickFormat(d => d % 2 ? d : '')
+        
+        svg.append('g')
+            .style('font-size', '16px')
+            .call(xAxis)
+            .attr('transform', `translate(0, ${height - margin.bottom })`)
+        
+        svg.append('g')
+            .style('font-size', '16px')
+            .call(yAxis)
+            .attr('transform', `translate(${margin.left}, 0)`)
+        
+        svg.append('g')
+            .selectAll('rect')
+            .data(data)
+            .join('rect')
+                .attr('x', (d,i) => xScale(i))
+                .attr('y', d => yScale(d.success))
+                .attr('height', d => yScale(0) - yScale(d.success))
+                .attr('width', xScale.bandwidth() / 2)
+                .attr('fill', 'green')
+        
+        svg.append('g')
+            .selectAll('rect')
+            .data(data)
+            .join('rect')
+                .attr('x', (d,i) => xScale(i) + xScale.bandwidth() / 2)
+                .attr('y', d => yScale(d.failure))
+                .attr('height', d => yScale(0) - yScale(d.failure))
+                .attr('width', xScale.bandwidth() / 2)
+                .attr('fill', 'red')
     })
 
     return (
         <div id="successfailure-container">
-            <div id="successfailure-title">Successes and Failures Each Year</div>
+            <div id="successfailure-title">Successful and Failed Launches Per Year</div>
             <div id="successfailure-wrapper">
                 <svg ref={svgRef}></svg>
             </div>
