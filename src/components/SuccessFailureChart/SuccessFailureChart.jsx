@@ -2,13 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
 import './SuccessFailureChart.scss';
+import LegendEntry from '../LegendEntry/LegendEntry';
 
 export default function SuccessFailureChart ({ launches }) {
 
     const svgRef = useRef();
     const width = 600;
     const height = 400;
-    const margin = { top: 100, right: 50, bottom: 50, left: 50};
+    const margin = { top: 120, right: 50, bottom: 50, left: 50};
+    const successColor = 'purple';
+    const failColor = 'orange';
 
     const years = {};
 
@@ -93,7 +96,7 @@ export default function SuccessFailureChart ({ launches }) {
                 .attr('y', d => yScale(d.success))
                 .attr('height', d => yScale(0) - yScale(d.success))
                 .attr('width', xScale.bandwidth() / 2)
-                .attr('fill', 'green')
+                .attr('fill', successColor)
         
         svg.append('g')
             .selectAll('rect')
@@ -103,13 +106,18 @@ export default function SuccessFailureChart ({ launches }) {
                 .attr('y', d => yScale(d.failure))
                 .attr('height', d => yScale(0) - yScale(d.failure))
                 .attr('width', xScale.bandwidth() / 2)
-                .attr('fill', 'red')
+                .attr('fill', failColor)
     })
 
     return (
         <div id="successfailure-container">
             <div id="successfailure-title">Successful and Failed Launches Per Year</div>
+            
             <div id="successfailure-wrapper">
+                <div id="bar-legend">
+                    <LegendEntry color={successColor} title="Successful Launch" />
+                    <LegendEntry color={failColor} title="Failed Launch" />
+                </div>
                 <svg ref={svgRef}></svg>
             </div>
         </div>
