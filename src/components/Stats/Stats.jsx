@@ -3,6 +3,7 @@ import React from 'react';
 import './Stats.scss';
 import CustomerPieChart from '../CustomerPieChart/CustomerPieChart';
 import LaunchFrequency from '../LaunchFrequency/LaunchFrequency';
+import SuccessFailureChart from '../SuccessFailureChart/SuccessFailureChart';
 
 export default function Stats ({ launchs }) {
     const allCustomers = [];
@@ -36,6 +37,7 @@ export default function Stats ({ launchs }) {
             <div id="stats-wrapper">
                 <CustomerPieChart customers={customers} />
                 <LaunchFrequency launches={launchs} />
+                <SuccessFailureChart launches={launchs} />
             </div>
         </div>
     )
