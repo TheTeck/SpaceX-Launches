@@ -1,0 +1,39 @@
+@import "../../sass/fonts";
+@import "../../sass/colors";
+
+#loadingdisplay-container {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: black;
+
+  p {
+    color: white;
+    width: 100%;
+    text-align: center;
+    line-height: 200px;
+    margin: 0;
+    font-size: $font-small;
+    font-family: $font-logo;
+    position: absolute;
+    z-index: 3;
+  }
+}
+
+.cog {
+  width: 150px;
+  height: 150px;
+  margin: 25px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: $color-details-main-dark;
+}
+
+.tooth {
+}
