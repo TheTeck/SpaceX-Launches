@@ -6,6 +6,7 @@ import Stats from '../Stats/Stats';
 import LaunchDetails from '../LaunchDetails/LaunchDetails';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
+import LoadingDisplay from '../LoadingDisplay/LoadingDisplay';
 import apiService from '../../utilities/apiService';
 
 export default function HomePage (props) {
@@ -13,6 +14,7 @@ export default function HomePage (props) {
     const [activeLaunch, setActiveLaunch] = useState(null);
     const [currentNav, setCurrentNav] = useState('timeline');
     const [launchData, setLaunchData] = useState([]);
+    const [showLoading, setShowLoading] = useState(true);
 
     function updateActiveLaunch (launch) {
         setActiveLaunch(launch);
@@ -26,6 +28,7 @@ export default function HomePage (props) {
         try {
             const apiData = await apiService.getData();
             setLaunchData(apiData);
+            //setShowLoading(false);
         } catch (error) {
             console.log('Unable to retreive data');
         }
@@ -52,7 +55,9 @@ export default function HomePage (props) {
                     <LaunchDetails launch={activeLaunch} updateActiveLaunch={updateActiveLaunch} />
                 : ''
             }
-            
+            {
+                showLoading ? <LoadingDisplay /> : ''
+            }
         </div>
     )
 }
