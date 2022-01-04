@@ -26,14 +26,11 @@
   }
 }
 
-.cog {
-  width: 150px;
-  height: 150px;
-  margin: 25px;
-  position: absolute;
+.spinner {
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+  border-top: 2px solid white;
   border-radius: 50%;
-  background-color: $color-details-main-dark;
-}
-
-.tooth {
+  position: absolute;
 }

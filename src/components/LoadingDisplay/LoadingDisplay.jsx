@@ -5,8 +5,8 @@ import './LoadingDisplay.scss';
 export default function LoadingDisplay (props) {
     return (
         <div id="loadingdisplay-container">
-            <div className='cog'>
-                <div className='tooth'></div>
+            <div className='spinner'>
+                
             </div>
             <p>Loading Data...</p>
         </div>
