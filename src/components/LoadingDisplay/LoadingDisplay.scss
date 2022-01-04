@@ -12,6 +12,7 @@
   border: 2px solid white;
   border-radius: 50%;
   background-color: black;
+  overflow: hidden;
 
   p {
     color: white;
@@ -27,10 +28,28 @@
 }
 
 .spinner {
-  margin: 5%;
-  width: 90%;
-  height: 90%;
-  border-top: 2px solid white;
+  margin: 15% 2%;
+  width: 96%;
+  height: 70%;
+  border-top: 3px solid $color-details-main-dark;
   border-radius: 50%;
   position: absolute;
+  animation: spin 10s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(720deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(720deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
 }

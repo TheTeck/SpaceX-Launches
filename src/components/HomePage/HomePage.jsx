@@ -28,7 +28,7 @@ export default function HomePage (props) {
         try {
             const apiData = await apiService.getData();
             setLaunchData(apiData);
-            //setShowLoading(false);
+            setShowLoading(false);
         } catch (error) {
             console.log('Unable to retreive data');
         }
