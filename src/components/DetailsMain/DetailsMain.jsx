@@ -13,6 +13,10 @@ export default function DetailsMain ({ launch, updateActiveLaunch, toggleDisplay
         toggleDisplay();
     }
 
+    function blockPropagation (e) {
+        e.stopPropagation();
+    }
+
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                     'August', 'September', 'October', 'November', 'December'];
     const date = new Date(launch.launch_date_local);
@@ -20,7 +24,7 @@ export default function DetailsMain ({ launch, updateActiveLaunch, toggleDisplay
                             + date.getFullYear();
 
     return (
-        <div className="launch-details">
+        <div className="launch-details" onClick={blockPropagation}>
             <DetailSection width={15} bold={true} centered={true}>
                 { launch.flight_number }
             </DetailSection>

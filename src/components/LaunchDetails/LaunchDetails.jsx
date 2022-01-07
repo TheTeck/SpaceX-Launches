@@ -20,8 +20,12 @@ export default function LaunchDetails ({ launch, updateActiveLaunch }) {
         setPrevLaunch(launch.flight_number);
     }
 
+    function modalClick () {
+        updateActiveLaunch(null);
+    }
+
     return (
-        <>
+        <div className='modal-container' onClick={modalClick}>
             {
                 isOnMain ? <DetailsMain 
                                 launch={launch} 
@@ -34,6 +38,6 @@ export default function LaunchDetails ({ launch, updateActiveLaunch }) {
                     toggleDisplay={toggleDisplay} 
                 />
             }
-        </>
+        </div>
     )
 }

@@ -15,10 +15,14 @@ export default function MoreInfo ({ launch, updateActiveLaunch, toggleDisplay })
         toggleDisplay();
     }
 
+    function blockPropagation (e) {
+        e.stopPropagation();
+    }
+
     const payloads = launch.rocket.second_stage.payloads;
 
     return (
-        <div className="launch-more-details">
+        <div className="launch-more-details" onClick={blockPropagation}>
             <DetailSection width={100}>
                 <p><strong>Payload</strong></p>
                 {
